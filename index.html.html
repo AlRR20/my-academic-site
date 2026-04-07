@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Academic Resources Directory | دليل المصادر الأكاديمية</title>
+<meta name="description" content="Trusted academic databases, journals, and research tools for students, researchers, and educators worldwide."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500&family=Amiri:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue: #1a4f8a;
+    --blue-mid: #2563a8;
+    --blue-light: #deeaf8;
+    --blue-pale: #f0f6ff;
+    --slate: #4a4f5e;
+    --slate-light: #f4f5f7;
+    --slate-border: #e2e4ea;
+    --white: #ffffff;
+    --text: #1c1f2a;
+    --text-muted: #6b7280;
+    --accent: #c8873a;
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: #f7f8fc;
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  body.rtl {
+    font-family: 'Amiri', serif;
+    direction: rtl;
+  }
+
+  /* ─── HEADER ─── */
+  .site-header {
+    background: linear-gradient(135deg, #0f3460 0%, #1a4f8a 55%, #1e6ab0 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .site-header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.04) 0%, transparent 60%),
+                      radial-gradient(circle at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 50%);
+  }
+  .site-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 60px;
+    background: #f7f8fc;
+    clip-path: ellipse(55% 100% at 50% 100%);
+  }
+
+  .topbar {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; z-index: 2;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+  .brand-mark {
+    width: 42px; height: 42px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .brand-mark svg { width: 22px; height: 22px; fill: white; }
+  .brand-text { color: white; }
+  .brand-text span { display: block; }
+  .brand-text .b1 { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; letter-spacing: 0.2px; }
+  .brand-text .b2 { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 0.5px; }
+  body.rtl .brand-text .b1 { font-family: 'Amiri', serif; font-size: 18px; }
+
+  .topbar-right { display: flex; align-items: center; gap: 10px; }
+  .lang-btn {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 7px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .lang-btn:hover { background: rgba(255,255,255,0.22); }
+
+  .hero {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 5rem;
+    text-align: center;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
+    font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 20px;
+    margin-bottom: 1.2rem;
+  }
+  .hero-eyebrow::before { content: '●'; font-size: 6px; color: var(--accent); }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 700;
+    color: white;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  body.rtl .hero-title { font-family: 'Amiri', serif; line-height: 1.4; }
+  .hero-sub {
+    font-size: clamp(14px, 2vw, 17px);
+    color: rgba(255,255,255,0.7);
+    max-width: 540px;
+    margin: 0 auto 2rem;
+    font-weight: 300;
+  }
+  .search-wrap {
+    max-width: 580px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .search-input {
+    width: 100%;
+    padding: 16px 56px 16px 22px;
+    border-radius: 40px;
+    border: none;
+    font-size: 15px;
+    outline: none;
+    background: white;
+    color: var(--text);
+    font-family: inherit;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    transition: box-shadow 0.2s;
+  }
+  body.rtl .search-input { padding: 16px 22px 16px 56px; }
+  .search-input:focus { box-shadow: 0 8px 40px rgba(0,0,0,0.28); }
+  .search-icon {
+    position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+    color: var(--blue); pointer-events: none;
+  }
+  body.rtl .search-icon { right: auto; left: 20px; }
+
+  /* ─── STATS BAR ─── */
+  .stats-bar {
+    background: white;
+    border-bottom: 1px solid var(--slate-border);
+    padding: 0;
+  }
+  .stats-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+  }
+  .stat-item {
+    text-align: center;
+    padding: 1.1rem 2.5rem;
+    border-right: 1px solid var(--slate-border);
+    flex: 1; max-width: 200px;
+  }
+  .stat-item:last-child { border-right: none; }
+  body.rtl .stat-item { border-right: none; border-left: 1px solid var(--slate-border); }
+  body.rtl .stat-item:last-child { border-left: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 700;
+    color: var(--blue);
+    display: block;
+  }
+  body.rtl .stat-num { font-family: 'Amiri', serif; }
+  .stat-lbl { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.7px; }
+
+  /* ─── MAIN CONTENT ─── */
+  .main { max-width: 1080px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  /* TABS */
+  .tabs-row {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .tab-btn {
+    display: flex; align-items: center; gap: 8px;
+    padding: 9px 18px;
+    border-radius: 30px;
+    border: 1.5px solid var(--slate-border);
+    background: white;
+    color: var(--slate);
+    font-size: 13.5px; font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.18s;
+  }
+  .tab-btn:hover { border-color: var(--blue-mid); color: var(--blue-mid); }
+  .tab-btn.active {
+    background: var(--blue);
+    color: white; border-color: var(--blue);
+  }
+  .tab-icon { font-size: 15px; }
+
+  /* TYPE FILTERS */
+  .filters-row {
+    display: flex; gap: 7px; flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--slate-border);
+  }
+  .filter-label {
+    font-size: 12px; color: var(--text-muted); padding: 5px 0;
+    display: flex; align-items: center;
+    margin-right: 4px;
+    letter-spacing: 0.3px;
+  }
+  body.rtl .filter-label { margin-right: 0; margin-left: 4px; }
+  .filter-btn {
+    padding: 5px 14px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--slate-border);
+    background: white;
+    color: var(--text-muted);
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .filter-btn:hover { color: var(--blue); border-color: var(--blue); }
+  .filter-btn.active {
+    background: var(--blue-light); color: var(--blue);
+    border-color: var(--blue-mid); font-weight: 500;
+  }
+
+  /* SECTION TITLE */
+  .section-hd {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 1.2rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700; color: var(--text);
+  }
+  body.rtl .section-title { font-family: 'Amiri', serif; font-size: 22px; }
+  .section-count { font-size: 13px; color: var(--text-muted); }
+
+  /* GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 16px;
+  }
+
+  /* CARD */
+  .res-card {
+    background: white;
+    border: 1px solid var(--slate-border);
+    border-radius: var(--radius);
+    padding: 1.4rem;
+    display: flex; flex-direction: column;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    position: relative; overflow: hidden;
+  }
+  .res-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--card-accent, var(--blue));
+    opacity: 0; transition: opacity 0.2s;
+  }
+  .res-card:hover {
+    border-color: #b8c8e0;
+    box-shadow: 0 6px 28px rgba(26,79,138,0.1);
+    transform: translateY(-2px);
+  }
+  .res-card:hover::before { opacity: 1; }
+  .res-card.hidden { display: none; }
+
+  .card-head { display: flex; align-items: flex-start; gap: 13px; margin-bottom: 12px; }
+  .card-icon {
+    width: 46px; height: 46px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+  }
+  .card-title-wrap { flex: 1; }
+  .card-name { font-size: 15px; font-weight: 500; color: var(--text); line-height: 1.25; margin-bottom: 4px; }
+  body.rtl .card-name { font-family: 'Amiri', serif; font-size: 17px; }
+  .card-badge {
+    display: inline-block;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.3px;
+    padding: 2px 9px; border-radius: 20px;
+  }
+  .badge-journals { background: #deeaf8; color: #1a4f8a; }
+  .badge-books    { background: #dcf0e2; color: #1a6636; }
+  .badge-stats    { background: #fdefd8; color: #7a4a10; }
+  .badge-videos   { background: #fce4ef; color: #7a1a42; }
+  .badge-databases{ background: #e8e4fb; color: #3d2b99; }
+
+  .card-desc {
+    font-size: 13px; color: var(--text-muted);
+    line-height: 1.65; flex: 1; margin-bottom: 1.1rem;
+  }
+  body.rtl .card-desc { font-family: 'Amiri', serif; font-size: 15px; }
+
+  .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .aud-tag {
+    font-size: 10px; padding: 2px 8px;
+    background: var(--slate-light); color: var(--slate);
+    border-radius: 6px;
+  }
+  .visit-btn {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 7px 16px;
+    background: var(--blue);
+    color: white; border: none;
+    border-radius: var(--radius-sm);
+    font-size: 12.5px; font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+    white-space: nowrap;
+    transition: background 0.15s, transform 0.1s;
+    flex-shrink: 0;
+  }
+  .visit-btn:hover { background: #0f3460; }
+  .visit-btn:active { transform: scale(0.97); }
+  .visit-btn svg { width: 12px; height: 12px; fill: white; }
+
+  /* EMPTY STATE */
+  .empty-state {
+    display: none; text-align: center;
+    padding: 4rem 1rem; color: var(--text-muted);
+  }
+  .empty-state.visible { display: block; }
+  .empty-icon { font-size: 40px; margin-bottom: 1rem; }
+  .empty-title { font-size: 17px; font-weight: 500; color: var(--text); margin-bottom: 0.4rem; }
+  .empty-sub { font-size: 14px; }
+
+  /* FOOTER */
+  .site-footer {
+    background: #0f3460;
+    color: rgba(255,255,255,0.65);
+    text-align: center;
+    padding: 2rem 1.5rem;
+    font-size: 13px;
+  }
+  .site-footer a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .footer-inner { max-width: 1080px; margin: 0 auto; }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    color: white; font-size: 16px; margin-bottom: 0.4rem;
+  }
+  body.rtl .footer-brand { font-family: 'Amiri', serif; font-size: 18px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .stats-inner { gap: 0; }
+    .stat-item { padding: 0.9rem 1rem; }
+    .stat-num { font-size: 20px; }
+    .hero { padding: 2rem 1rem 4.5rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .section-hd { flex-direction: column; gap: 4px; }
+  }
+  @media (max-width: 400px) {
+    .stats-inner { flex-wrap: wrap; }
+    .stat-item { min-width: 50%; border: none; border-bottom: 1px solid var(--slate-border); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="topbar">
+    <a href="#" class="brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 11-6-11-6zM1 19l11 6 11-6M1 14l11 6 11-6"/></svg>
+      </div>
+      <div class="brand-text">
+        <span class="b1" id="brand-name">Academic Directory</span>
+        <span class="b2" id="brand-sub">Research Resources Hub</span>
+      </div>
+    </a>
+    <div class="topbar-right">
+      <button class="lang-btn" id="lang-btn" onclick="toggleLang()">العربية</button>
+    </div>
+  </div>
+  <div class="hero">
+    <div class="hero-eyebrow" id="hero-eyebrow">Curated Academic Resources</div>
+    <h1 class="hero-title" id="hero-title">Academic Resources<br>Directory</h1>
+    <p class="hero-sub" id="hero-sub">Trusted databases, journals, and tools for students, researchers, and educators worldwide</p>
+    <div class="search-wrap">
+      <input class="search-input" id="search-input" placeholder="Search resources..." oninput="applyFilters()"/>
+      <span class="search-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+        </svg>
+      </span>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><span class="stat-num">24</span><span class="stat-lbl" id="s1">Resources</span></div>
+    <div class="stat-item"><span class="stat-num">4</span><span class="stat-lbl" id="s2">Audiences</span></div>
+    <div class="stat-item"><span class="stat-num">5</span><span class="stat-lbl" id="s3">Types</span></div>
+    <div class="stat-item"><span class="stat-num">2</span><span class="stat-lbl" id="s4">Languages</span></div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+  <!-- Audience Tabs -->
+  <div class="tabs-row" id="tabs-row">
+    <button class="tab-btn active" data-cat="all" onclick="setTab(this)">
+      <span class="tab-icon">🗂️</span><span id="t-all">All Resources</span>
+    </button>
+    <button class="tab-btn" data-cat="students" onclick="setTab(this)">
+      <span class="tab-icon">🎓</span><span id="t-students">Students</span>
+    </button>
+    <button class="tab-btn" data-cat="researchers" onclick="setTab(this)">
+      <span class="tab-icon">🔬</span><span id="t-researchers">Researchers</span>
+    </button>
+    <button class="tab-btn" data-cat="entrepreneurs" onclick="setTab(this)">
+      <span class="tab-icon">💼</span><span id="t-entrepreneurs">Entrepreneurs</span>
+    </button>
+    <button class="tab-btn" data-cat="lecturers" onclick="setTab(this)">
+      <span class="tab-icon">📋</span><span id="t-lecturers">Lecturers</span>
+    </button>
+  </div>
+
+  <!-- Type Filters -->
+  <div class="filters-row">
+    <span class="filter-label" id="filter-label">Filter by:</span>
+    <button class="filter-btn active" data-type="all" onclick="setType(this)"><span id="f-all">All Types</span></button>
+    <button class="filter-btn" data-type="journals" onclick="setType(this)"><span id="f-journals">📰 Journals</span></button>
+    <button class="filter-btn" data-type="books" onclick="setType(this)"><span id="f-books">📚 Books</span></button>
+    <button class="filter-btn" data-type="databases" onclick="setType(this)"><span id="f-databases">🗄️ Databases</span></button>
+    <button class="filter-btn" data-type="stats" onclick="setType(this)"><span id="f-stats">📊 Statistics</span></button>
+    <button class="filter-btn" data-type="videos" onclick="setType(this)"><span id="f-videos">🎥 Videos</span></button>
+  </div>
+
+  <!-- Section heading -->
+  <div class="section-hd">
+    <h2 class="section-title" id="section-title">All Resources</h2>
+    <span class="section-count" id="section-count">24 resources</span>
+  </div>
+
+  <!-- Cards -->
+  <div class="cards-grid" id="cards-grid"></div>
+  <div class="empty-state" id="empty-state">
+    <div class="empty-icon">🔍</div>
+    <div class="empty-title" id="empty-title">No results found</div>
+    <div class="empty-sub" id="empty-sub">Try adjusting your search or filter criteria.</div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand" id="footer-brand">Academic Resources Directory</div>
+    <p id="footer-text">Empowering scholars with trusted, curated academic resources worldwide.</p>
+  </div>
+</footer>
+
+<script>
+const DATA = [
+  { id:1, en:{name:"Google Scholar",desc:"Freely search scholarly literature across disciplines — articles, theses, books, and court opinions from academic publishers."}, ar:{name:"جوجل سكولار",desc:"محرك بحث مجاني في الأدبيات الأكاديمية عبر التخصصات، يشمل المقالات والرسائل والكتب والأحكام القضائية من الناشرين الأكاديميين."}, icon:"🎓", bg:"#deeaf8", accent:"#1a4f8a", type:"databases", cats:["students","researchers","lecturers"], url:"https://scholar.google.com" },
+  { id:2, en:{name:"JSTOR",desc:"Digital library of academic journals, books, and primary sources across humanities, social sciences, and science."}, ar:{name:"جيستور",desc:"مكتبة رقمية للمجلات الأكاديمية والكتب والمصادر الأولية في العلوم الإنسانية والاجتماعية والطبيعية."}, icon:"📚", bg:"#dcf0e2", accent:"#1a6636", type:"journals", cats:["researchers","lecturers","students"], url:"https://www.jstor.org" },
+  { id:3, en:{name:"Arabic Digital Library",desc:"Comprehensive digital archive of Arabic manuscripts, heritage texts, and modern Arabic academic publications."}, ar:{name:"المكتبة الرقمية العربية",desc:"أرشيف رقمي شامل للمخطوطات العربية والنصوص التراثية والمطبوعات الأكاديمية العربية الحديثة."}, icon:"📖", bg:"#fce4ef", accent:"#7a1a42", type:"books", cats:["researchers","students","lecturers"], url:"https://www.library.aub.edu.lb" },
+  { id:4, en:{name:"PubMed",desc:"Free full-text archive of biomedical and life sciences literature from MEDLINE, life science journals, and online books."}, ar:{name:"بابميد",desc:"أرشيف مجاني للنصوص الكاملة في الأدبيات الطبية الحيوية وعلوم الحياة من MEDLINE والمجلات العلمية."}, icon:"🧬", bg:"#e8e4fb", accent:"#3d2b99", type:"journals", cats:["researchers","students"], url:"https://pubmed.ncbi.nlm.nih.gov" },
+  { id:5, en:{name:"World Bank Open Data",desc:"Free access to global development data — statistics on economy, health, education, and environment from 200+ countries."}, ar:{name:"بيانات البنك الدولي المفتوحة",desc:"وصول مجاني إلى بيانات التنمية العالمية بما في ذلك إحصاءات الاقتصاد والصحة والتعليم والبيئة من أكثر من 200 دولة."}, icon:"📊", bg:"#fdefd8", accent:"#7a4a10", type:"stats", cats:["researchers","entrepreneurs","lecturers"], url:"https://data.worldbank.org" },
+  { id:6, en:{name:"MIT OpenCourseWare",desc:"Free lecture notes, exams, and videos from actual MIT courses across engineering, science, management, and humanities."}, ar:{name:"المقررات المفتوحة لـ MIT",desc:"ملاحظات المحاضرات والامتحانات والمقاطع المرئية المجانية من دورات MIT الفعلية في الهندسة والعلوم والإنسانيات."}, icon:"🎥", bg:"#deeaf8", accent:"#1a4f8a", type:"videos", cats:["students","lecturers"], url:"https://ocw.mit.edu" },
+  { id:7, en:{name:"Scopus",desc:"World's largest abstract and citation database covering peer-reviewed research from 5,000+ international publishers."}, ar:{name:"سكوبس",desc:"أكبر قاعدة بيانات للملخصات والاستشهادات في العالم تغطي الأبحاث المحكّمة من أكثر من 5000 ناشر دولي."}, icon:"🔬", bg:"#e8e4fb", accent:"#3d2b99", type:"journals", cats:["researchers"], url:"https://www.scopus.com" },
+  { id:8, en:{name:"Statista",desc:"Leading statistics portal aggregating data from 22,500+ sources across 170 industries and 150+ countries worldwide."}, ar:{name:"ستاتيستا",desc:"بوابة إحصاءات رائدة تجمع بيانات من أكثر من 22500 مصدر في 170 صناعة و150+ دولة حول العالم."}, icon:"📈", bg:"#fdefd8", accent:"#7a4a10", type:"stats", cats:["entrepreneurs","researchers","students"], url:"https://www.statista.com" },
+  { id:9, en:{name:"Khan Academy",desc:"Free educational videos and interactive exercises covering math, science, computing, and humanities for all levels."}, ar:{name:"أكاديمية خان",desc:"مقاطع تعليمية مجانية وتمارين تفاعلية تغطي الرياضيات والعلوم والحوسبة والإنسانيات لجميع المستويات."}, icon:"🎬", bg:"#dcf0e2", accent:"#1a6636", type:"videos", cats:["students","lecturers"], url:"https://www.khanacademy.org" },
+  { id:10, en:{name:"IEEE Xplore",desc:"Digital library for technical literature in electrical engineering, electronics, computer science, and related fields."}, ar:{name:"مكتبة IEEE Xplore",desc:"مكتبة رقمية للأدبيات التقنية في الهندسة الكهربائية والإلكترونيات وعلوم الحاسوب والمجالات ذات الصلة."}, icon:"⚡", bg:"#deeaf8", accent:"#1a4f8a", type:"journals", cats:["researchers","students"], url:"https://ieeexplore.ieee.org" },
+  { id:11, en:{name:"Project MUSE",desc:"Trusted nonprofit source of humanities and social science journals and books from 300+ scholarly organizations."}, ar:{name:"مشروع ميوز",desc:"مصدر غير ربحي موثوق للمجلات والكتب الإنسانية والعلوم الاجتماعية من أكثر من 300 منظمة أكاديمية."}, icon:"📰", bg:"#fce4ef", accent:"#7a1a42", type:"journals", cats:["researchers","lecturers"], url:"https://muse.jhu.edu" },
+  { id:12, en:{name:"UN Data",desc:"A single gateway to global statistics from the United Nations — demographics, economy, environment, and social indicators."}, ar:{name:"بيانات الأمم المتحدة",desc:"بوابة شاملة للإحصاءات العالمية من منظومة الأمم المتحدة تشمل البيانات الديموغرافية والاقتصادية والاجتماعية والبيئية."}, icon:"🌍", bg:"#fdefd8", accent:"#7a4a10", type:"stats", cats:["researchers","entrepreneurs","lecturers"], url:"https://data.un.org" },
+  { id:13, en:{name:"Open Library",desc:"Open, editable library catalog with millions of free e-books and direct access to the Internet Archive collection."}, ar:{name:"المكتبة المفتوحة",desc:"فهرس مكتبة مفتوح مع ملايين الكتب الإلكترونية المجانية والوصول المباشر إلى مجموعة أرشيف الإنترنت."}, icon:"📗", bg:"#dcf0e2", accent:"#1a6636", type:"books", cats:["students","lecturers"], url:"https://openlibrary.org" },
+  { id:14, en:{name:"Harvard Business Review",desc:"Premier source of management thought — strategy, innovation, leadership, and entrepreneurship from HBS faculty."}, ar:{name:"هارفارد بيزنس ريفيو",desc:"المصدر الأول لأفكار الإدارة في الاستراتيجية والابتكار والقيادة وريادة الأعمال من هيئة تدريس كلية هارفارد للأعمال."}, icon:"💼", bg:"#e8e4fb", accent:"#3d2b99", type:"journals", cats:["entrepreneurs","researchers"], url:"https://hbr.org" },
+  { id:15, en:{name:"Coursera Lecture Library",desc:"University-level video courses from 200+ institutions — many freely auditable with optional certification programs."}, ar:{name:"مكتبة محاضرات كورسيرا",desc:"دورات فيديو بمستوى جامعي من أكثر من 200 مؤسسة، كثير منها قابلة للمتابعة مجانًا مع برامج شهادات اختيارية."}, icon:"🖥️", bg:"#deeaf8", accent:"#1a4f8a", type:"videos", cats:["students","lecturers","entrepreneurs"], url:"https://www.coursera.org" },
+  { id:16, en:{name:"Al-Manhal",desc:"Leading Arab digital academic platform specializing in Arabic e-books, scientific journals, and university theses."}, ar:{name:"المنهل",desc:"منصة أكاديمية عربية رقمية رائدة متخصصة في الكتب الإلكترونية والمجلات العلمية والرسائل الجامعية العربية."}, icon:"📕", bg:"#fce4ef", accent:"#7a1a42", type:"books", cats:["students","researchers","lecturers"], url:"https://almanhal.com" },
+  { id:17, en:{name:"OECD iLibrary",desc:"Official online library of the OECD with publications, statistics, and data on economics, society, and policy."}, ar:{name:"مكتبة OECD الرقمية",desc:"المكتبة الإلكترونية الرسمية لمنظمة OECD تضم منشورات وإحصاءات وبيانات حول الاقتصاد والمجتمع والسياسة."}, icon:"🏛️", bg:"#fdefd8", accent:"#7a4a10", type:"stats", cats:["researchers","entrepreneurs","lecturers"], url:"https://www.oecd-ilibrary.org" },
+  { id:18, en:{name:"arXiv",desc:"Open-access repository of preprints in physics, mathematics, computer science, quantitative biology, and economics."}, ar:{name:"أركايف",desc:"مستودع وصول مفتوح للمطبوعات الأولية في الفيزياء والرياضيات وعلوم الحاسوب والبيولوجيا الكمية والاقتصاد."}, icon:"🔭", bg:"#e8e4fb", accent:"#3d2b99", type:"journals", cats:["researchers","students"], url:"https://arxiv.org" },
+  { id:19, en:{name:"Springer Link",desc:"Platform providing access to millions of scientific documents, books, and research papers in science, technology, and medicine."}, ar:{name:"سبرينجر لينك",desc:"منصة توفر الوصول إلى ملايين الوثائق العلمية والكتب والأوراق البحثية في العلوم والتكنولوجيا والطب."}, icon:"🌿", bg:"#dcf0e2", accent:"#1a6636", type:"journals", cats:["researchers","students"], url:"https://link.springer.com" },
+  { id:20, en:{name:"TED-Ed",desc:"Award-winning animated educational videos on every academic topic, curated and created with expert educators."}, ar:{name:"تيد-إيد",desc:"مقاطع فيديو تعليمية متحركة حائزة على جوائز حول كل موضوع أكاديمي، ينتقيها ويصنعها خبراء في التعليم."}, icon:"💡", bg:"#fdefd8", accent:"#7a4a10", type:"videos", cats:["students","lecturers"], url:"https://ed.ted.com" },
+  { id:21, en:{name:"ProQuest Dissertations",desc:"Comprehensive global database of dissertations and theses from universities worldwide spanning over 150 years."}, ar:{name:"بروكويست للرسائل الجامعية",desc:"قاعدة بيانات عالمية شاملة للرسائل والأطروحات الجامعية من جامعات حول العالم على مدى أكثر من 150 عامًا."}, icon:"🎓", bg:"#e8e4fb", accent:"#3d2b99", type:"databases", cats:["researchers","students"], url:"https://www.proquest.com" },
+  { id:22, en:{name:"Eurostat",desc:"Statistical office of the European Union providing high-quality statistics on economy, population, trade, and policy."}, ar:{name:"يوروستات",desc:"المكتب الإحصائي للاتحاد الأوروبي يوفر إحصاءات عالية الجودة حول الاقتصاد والسكان والتجارة والسياسة الأوروبية."}, icon:"🇪🇺", bg:"#deeaf8", accent:"#1a4f8a", type:"stats", cats:["researchers","entrepreneurs"], url:"https://ec.europa.eu/eurostat" },
+  { id:23, en:{name:"Project Gutenberg",desc:"Over 70,000 free e-books — classics of literature, science, history, and philosophy with no restrictions."}, ar:{name:"مشروع غوتنبرغ",desc:"أكثر من 70000 كتاب إلكتروني مجاني يشمل روائع الأدب والعلوم والتاريخ والفلسفة بدون قيود."}, icon:"📜", bg:"#dcf0e2", accent:"#1a6636", type:"books", cats:["students","lecturers"], url:"https://www.gutenberg.org" },
+  { id:24, en:{name:"LinkedIn Learning",desc:"Professional development video courses on business, technology, and creative skills for career growth."}, ar:{name:"لينكد إن ليرنينج",desc:"دورات فيديو للتطوير المهني في الأعمال والتكنولوجيا والمهارات الإبداعية للنمو الوظيفي والمهني."}, icon:"🤝", bg:"#deeaf8", accent:"#1a4f8a", type:"videos", cats:["entrepreneurs","students"], url:"https://www.linkedin.com/learning" }
+];
+
+const STR = {
+  en: {
+    brandName:"Academic Directory", brandSub:"Research Resources Hub",
+    eyebrow:"Curated Academic Resources", heroTitle:"Academic Resources\nDirectory",
+    heroSub:"Trusted databases, journals, and tools for students, researchers, and educators worldwide",
+    placeholder:"Search resources...",
+    s1:"Resources", s2:"Audiences", s3:"Types", s4:"Languages",
+    tAll:"All Resources", tStudents:"Students", tResearchers:"Researchers", tEntrepreneurs:"Entrepreneurs", tLecturers:"Lecturers",
+    filterLabel:"Filter by:", fAll:"All Types", fJournals:"📰 Journals", fBooks:"📚 Books", fDatabases:"🗄️ Databases", fStats:"📊 Statistics", fVideos:"🎥 Videos",
+    sectionTitle:"All Resources",
+    visit:"Visit Source",
+    emptyTitle:"No results found", emptySub:"Try adjusting your search or filter criteria.",
+    footerBrand:"Academic Resources Directory",
+    footerText:"Empowering scholars with trusted, curated academic resources worldwide.",
+    langBtn:"العربية",
+    badgeJournals:"Journal", badgeBooks:"Book", badgeStats:"Statistics", badgeVideos:"Video", badgeDatabases:"Database",
+    audStudents:"Students", audResearchers:"Researchers", audEntrepreneurs:"Entrepreneurs", audLecturers:"Lecturers"
+  },
+  ar: {
+    brandName:"دليل المصادر الأكاديمية", brandSub:"مركز الموارد البحثية",
+    eyebrow:"مصادر أكاديمية منتقاة",
+    heroTitle:"دليل المصادر الأكاديمية",
+    heroSub:"قواعد بيانات وأدوات موثوقة للطلاب والباحثين والمعلمين حول العالم",
+    placeholder:"ابحث في المصادر...",
+    s1:"مصدر", s2:"فئة", s3:"أنواع", s4:"لغات",
+    tAll:"جميع المصادر", tStudents:"الطلاب", tResearchers:"الباحثون", tEntrepreneurs:"رواد الأعمال", tLecturers:"المحاضرون",
+    filterLabel:"تصفية:", fAll:"جميع الأنواع", fJournals:"📰 مجلات", fBooks:"📚 كتب", fDatabases:"🗄️ قواعد بيانات", fStats:"📊 إحصاءات", fVideos:"🎥 فيديو",
+    sectionTitle:"جميع المصادر",
+    visit:"زيارة المصدر",
+    emptyTitle:"لا توجد نتائج", emptySub:"حاول تعديل معايير البحث أو التصفية.",
+    footerBrand:"دليل المصادر الأكاديمية",
+    footerText:"تمكين الباحثين والعلماء بمصادر أكاديمية موثوقة ومنتقاة من حول العالم.",
+    langBtn:"English",
+    badgeJournals:"مجلة", badgeBooks:"كتاب", badgeStats:"إحصاء", badgeVideos:"فيديو", badgeDatabases:"قاعدة بيانات",
+    audStudents:"طلاب", audResearchers:"باحثون", audEntrepreneurs:"رواد أعمال", audLecturers:"محاضرون"
+  }
+};
+
+let lang = "en", activeCat = "all", activeType = "all";
+
+const $ = id => document.getElementById(id);
+
+function applyUI() {
+  const s = STR[lang];
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  document.body.className = lang === "ar" ? "rtl" : "";
+  $("brand-name").textContent = s.brandName;
+  $("brand-sub").textContent = s.brandSub;
+  $("hero-eyebrow").textContent = s.eyebrow;
+  $("hero-title").textContent = s.heroTitle;
+  $("hero-sub").textContent = s.heroSub;
+  $("search-input").placeholder = s.placeholder;
+  $("s1").textContent = s.s1; $("s2").textContent = s.s2;
+  $("s3").textContent = s.s3; $("s4").textContent = s.s4;
+  $("t-all").textContent = s.tAll; $("t-students").textContent = s.tStudents;
+  $("t-researchers").textContent = s.tResearchers; $("t-entrepreneurs").textContent = s.tEntrepreneurs;
+  $("t-lecturers").textContent = s.tLecturers;
+  $("filter-label").textContent = s.filterLabel;
+  $("f-all").textContent = s.fAll; $("f-journals").textContent = s.fJournals;
+  $("f-books").textContent = s.fBooks; $("f-databases").textContent = s.fDatabases;
+  $("f-stats").textContent = s.fStats; $("f-videos").textContent = s.fVideos;
+  $("lang-btn").textContent = s.langBtn;
+  $("footer-brand").textContent = s.footerBrand;
+  $("footer-text").textContent = s.footerText;
+  $("empty-title").textContent = s.emptyTitle;
+  $("empty-sub").textContent = s.emptySub;
+  renderCards();
+}
+
+function toggleLang() {
+  lang = lang === "en" ? "ar" : "en";
+  applyUI();
+}
+
+function setTab(btn) {
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  activeCat = btn.dataset.cat;
+  applyFilters();
+}
+
+function setType(btn) {
+  document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  activeType = btn.dataset.type;
+  applyFilters();
+}
+
+function applyFilters() {
+  const q = $("search-input").value.toLowerCase().trim();
+  const s = STR[lang];
+  let count = 0;
+  document.querySelectorAll(".res-card").forEach(card => {
+    const r = DATA.find(x => x.id === +card.dataset.id);
+    const txt = (r[lang].name + " " + r[lang].desc).toLowerCase();
+    const ok = (activeCat === "all" || r.cats.includes(activeCat))
+             && (activeType === "all" || r.type === activeType)
+             && (!q || txt.includes(q));
+    card.classList.toggle("hidden", !ok);
+    if (ok) count++;
+  });
+  let title = activeCat !== "all" ? s["t" + activeCat.charAt(0).toUpperCase() + activeCat.slice(1)] : s.sectionTitle;
+  $("section-title").textContent = title;
+  $("section-count").textContent = count + " " + (lang === "ar" ? "مصدر" : (count === 1 ? "resource" : "resources"));
+  $("empty-state").className = "empty-state" + (count === 0 ? " visible" : "");
+}
+
+const BADGE_CLASS = { journals:"badge-journals", books:"badge-books", stats:"badge-stats", videos:"badge-videos", databases:"badge-databases" };
+
+function renderCards() {
+  const s = STR[lang];
+  const AUD_MAP = { students: s.audStudents, researchers: s.audResearchers, entrepreneurs: s.audEntrepreneurs, lecturers: s.audLecturers };
+  const BADGE_LABEL = { journals: s.badgeJournals, books: s.badgeBooks, stats: s.badgeStats, videos: s.badgeVideos, databases: s.badgeDatabases };
+  $("cards-grid").innerHTML = DATA.map(r => `
+    <div class="res-card" data-id="${r.id}" style="--card-accent:${r.accent}">
+      <div class="card-head">
+        <div class="card-icon" style="background:${r.bg}">${r.icon}</div>
+        <div class="card-title-wrap">
+          <div class="card-name">${r[lang].name}</div>
+          <span class="card-badge ${BADGE_CLASS[r.type]}">${BADGE_LABEL[r.type]}</span>
+        </div>
+      </div>
+      <p class="card-desc">${r[lang].desc}</p>
+      <div class="card-footer">
+        <div class="card-tags">${r.cats.map(c => `<span class="aud-tag">${AUD_MAP[c]}</span>`).join("")}</div>
+        <a class="visit-btn" href="${r.url}" target="_blank" rel="noopener">
+          ${s.visit}
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+        </a>
+      </div>
+    </div>`).join("");
+  applyFilters();
+}
+
+renderCards();
+</script>
+</body>
+</html>
